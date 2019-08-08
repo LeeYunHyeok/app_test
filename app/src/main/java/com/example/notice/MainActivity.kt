@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.Window
 import android.widget.AdapterView
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.FirebaseApp
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_main.*
 import com.google.firebase.database.FirebaseDatabase
@@ -16,7 +17,7 @@ import com.google.firebase.database.ValueEventListener
 class MainActivity : AppCompatActivity() {
 
     var noticeList = arrayListOf<Notice>()
-    val db = FirebaseFirestore.getInstance()
+
     private val TAG = "Kotlin Firebase : "
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,9 +27,7 @@ class MainActivity : AppCompatActivity() {
         val noticeAdapter = NoticeListAdapter(this, noticeList)
         lv_notice.adapter = noticeAdapter
 
-
-        val database = FirebaseDatabase.getInstance()
-        val myRef = database.getReference("notice")
+        val myRef = FAdapter.db.getReference("notice")
 
         fab_write.setOnClickListener{
             val intent = Intent(this, NoticeWrite::class.java)
@@ -36,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         lv_notice.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
-            val intent = Intent(applicationContext, NoticeContent::class.java)
+            val intent = Intent(this, NoticeContent::class.java)
             intent.putExtra("num", noticeList[position].no_num)
             startActivity(intent)
 
@@ -55,6 +54,7 @@ class MainActivity : AppCompatActivity() {
                 var date:String
                 var reason:String
                 var user:String
+                var flag:String
                 /*var user_id:String = ""*/
 
                 for( value in dataSnapshot.children){
@@ -63,8 +63,10 @@ class MainActivity : AppCompatActivity() {
                     reason = value.child("reason").value.toString()
                     user = value.child("user").value.toString()
                     date = value.child("date").value.toString()
+                    flag = value.child("flag").value.toString()
                     /*user_id = value.child("user_id").value.toString()*/
-                    noticeList.add(Notice(title,reason,num,date,user))
+                    if(!flag.equals("2"))
+                        noticeList.add(Notice(title,reason,num,date,user))
 
                 }
                 noticeAdapter.notifyDataSetChanged()

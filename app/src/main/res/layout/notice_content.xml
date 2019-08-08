@@ -8,7 +8,7 @@
         tools:context=".NoticeContent"
         android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
             android:id="@+id/layoutCon_top"
             android:layout_width="match_parent"
             android:layout_height="48dp"
@@ -20,17 +20,25 @@
                 android:id="@+id/btnConback"
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
                 android:text="back"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="공지사항"
+                android:layout_toRightOf="@id/btnConback"
                 android:layout_marginLeft="30dp"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:gravity="center"
                 android:textColor="#fff"/>
-    </LinearLayout>
+        <Button
+                android:id="@+id/btnConList"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:text="back"/>
+    </RelativeLayout>
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -93,17 +101,17 @@
                             android:layout_height="wrap_content"
                             android:text="작성자 : "
                             android:textSize="13sp"
-                            android:layout_alignParentLeft="true"
-                            android:layout_marginLeft="250dp"
+                            android:layout_toLeftOf="@id/tvCon_user"
                             android:layout_alignTop="@id/tvCon_date"/>
                     <TextView
                             android:id="@+id/tvCon_user"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="name"
+                            android:inputType="text"
+                            android:lines="1"
                             android:textSize="13sp"
-                            android:layout_marginLeft="5dp"
-                            android:layout_toRightOf="@id/tvCon_person"
+                            android:layout_alignParentRight="true"
                             android:layout_alignTop="@id/tvCon_date"/>
                 </RelativeLayout>
                 <RelativeLayout

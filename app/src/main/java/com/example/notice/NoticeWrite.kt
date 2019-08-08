@@ -11,16 +11,15 @@ import kotlinx.android.synthetic.main.notice_write.*
 import java.util.*
 
 class NoticeWrite : AppCompatActivity() {
-    private val KEY_NOTICE = ""
+    private val KEY_NOTICE = "notice"
     private val TAG = "Kotlin Firebase : "
     var num:Int = 0
-    val database : FirebaseDatabase= FirebaseDatabase.getInstance()
-    var noticeRef : DatabaseReference = database.getReference("notice/")
+    var noticeRef : DatabaseReference = FAdapter.db.getReference(KEY_NOTICE)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.notice_write)
 
-        val noticeNum : DatabaseReference = database.getReference("notice_num")
+        val noticeNum : DatabaseReference = FAdapter.db.getReference("notice_num")
 
         btn_back.setOnClickListener{
             finish()
@@ -30,7 +29,7 @@ class NoticeWrite : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val value = dataSnapshot?.value
                 num = value.toString().toInt()
-                noticeRef = database.getReference("notice/${(num+1)}")
+                noticeRef = FAdapter.db.getReference("notice/${(num+1)}")
 
             }
 
@@ -64,9 +63,9 @@ class NoticeWrite : AppCompatActivity() {
                 val minu = instance.get(Calendar.MINUTE).toString()
                 val now = "$year/$month/$date $hour:$minu"
                 noticeRef.child("user_id").setValue("bsc2079")
-                noticeRef.child("user_id").setValue("bsc2079")
+                noticeRef.child("flag").setValue(0)
                 noticeRef.child("count").setValue(0)
-                noticeRef.child("user").setValue("이윤혁")
+                noticeRef.child("user").setValue("프렌트리")
                 noticeRef.child("title").setValue("$notice_title")
                 noticeRef.child("reason").setValue("$notice_con")
                 noticeRef.child("date").setValue("$now")

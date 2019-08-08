@@ -20,7 +20,7 @@ class NoticeListAdapter(val context: Context, val noticeList: ArrayList<Notice>)
 
         val notices = noticeList[position]
         /*val resourceId = context.resources.getIdentifier(notices.photo, "drawable", context.packageName)*/
-        tv_no_num.text = notices.no_num
+        tv_no_num.text = "${notices.no_num}. "
         tv_no_title.text = notices.no_title
         tv_no_person.text = notices.no_person
         tv_no_date.text = notices.no_date
