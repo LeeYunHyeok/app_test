@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:id="@+id/rv_list_notice">
+    <TextView
+            android:id="@+id/tv_no_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="번호"
+            android:textSize="17sp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#000"/>
+
+    <TextView
+            android:id="@+id/tv_no_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="글제목"
+            android:textSize="17sp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/tv_no_num"
+            android:layout_marginLeft="2dp"
+            android:textColor="#000"/>
+
+    <TextView
+            android:id="@+id/tv_no_person"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="작성자"
+            android:textSize="12sp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"/>
+
+    <TextView
+            android:id="@+id/tv_no_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="작성일"
+            android:textSize="13sp"
+            android:layout_below="@id/tv_no_title"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="7dp"/>
+
+</RelativeLayout>
