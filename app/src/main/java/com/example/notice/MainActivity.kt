@@ -16,21 +16,28 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.ValueEventListener
+import kotlinx.android.synthetic.main.top_nav.*
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
     var noticeList = arrayListOf<Notice>()
     private val TAG = "Kotlin Firebase : "
-    val bottom_navi = findViewById<View>(R.id.bottom_navi) as BottomNavigationView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main)
 
-        bottom_navi.setOnNavigationItemSelectedListener(this)
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment, NoticeFragment())
+            .commit()
 
-        /*val noticeAdapter = NoticeListAdapter(this, noticeList)
+        val bottom_navi = findViewById<View>(R.id.bottom_navi) as BottomNavigationView
+        bottom_navi.setOnNavigationItemSelectedListener(this)
+/*
+
+        val noticeAdapter = NoticeListAdapter(this, noticeList)
         lv_notice.adapter = noticeAdapter
 
         val myRef = FAdapter.db.getReference("notice")
@@ -90,51 +97,33 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     override fun onNavigationItemSelected(p0: MenuItem): Boolean {
         when(p0.itemId){
             R.id.bottom_home ->{
+                FAdapter.nav = R.menu.home_manu
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragment, NoticeFragment())
+                    .commit()
                 /*val fragmentA = FragmentA()
                 supportFragmentManager.beginTransaction().replace(R.id.fragment_container,fragmentA).commit()*/
             }
             R.id.bottom_admin -> {
-
+                FAdapter.nav = R.menu.admin_manu
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragment, NoticeFragment())
+                    .commit()
             }
             R.id.bottom_recruitment -> {
+                FAdapter.nav = R.menu.recruitment_manu
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragment, NoticeFragment())
+                    .commit()
             }
             R.id.bottom_setting -> {
-
+                FAdapter.nav = R.menu.setting_manu
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragment, NoticeFragment())
+                    .commit()
             }
         }
         return true
     }
 
 }
-
-
-
-
-/*val noticeRef = db.collection("num")
-        noticeRef.orderBy("num", Query.Direction.DESCENDING)
-        noticeRef.get().addOnCompleteListener { task ->
-            var title:String = ""
-            var num:String = ""
-            var date:String = ""
-            var reason:String = ""
-            var user:String = ""
-            task.result!!.documents.get(1).data
-            if (task.isSuccessful){
-                for (document in task.result!!) {
-                    Log.d(TAG, document.id + " => " + document.data)
-                    title = document.data.get("title").toString()
-                    num = document.data.get("num").toString()
-                    date = document.data.get("date").toString()
-                    reason = document.data.get("reason").toString()
-                    user = document.data.get("user").toString()
-                    noticeList.add(Notice(title,reason,num,date,user))
-
-                    *//*if(document.id == ""){
-
-                    }else {
-                        Log.w(TAG, "Error getting documents.", task.exception)
-                    }*//*
-                }
-                noticeAdapter.notifyDataSetChanged()
-            }
-        }*/

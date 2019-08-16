@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+            android:id="@+id/bottom_home"
+            android:enabled="true"
+            android:icon="@drawable/baseline_home_24px"
+            android:title="홈"/>
+
+    <item
+            android:id="@+id/bottom_admin"
+            android:enabled="true"
+            android:icon="@drawable/baseline_alarm_24px"
+            android:title="관리"/>
+
+    <item
+            android:id="@+id/bottom_recruitment"
+            android:enabled="true"
+            android:icon="@drawable/baseline_supervisor_account_24px"
+            android:title="채용"
+            android:visible="true"/>
+
+    <item
+            android:id="@+id/bottom_setting"
+            android:enabled="true"
+            android:icon="@drawable/baseline_settings_20px"
+            android:title="설정"/>
+</menu>

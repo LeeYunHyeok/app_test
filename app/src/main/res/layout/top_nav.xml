@@ -2,10 +2,30 @@
 <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <LinearLayout
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/navTop"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#fff"
+            app:itemTextColor="@color/top_color"
+            android:layout_alignParentTop="true"
+            app:layout_behavior="tech.thdev.app.view.BottomNavigationBehavior"
+            app:labelVisibilityMode="labeled"
+            android:stateListAnimator="@null">
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <FrameLayout
+            android:id="@+id/fragTop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/navTop">
+
+
+    </FrameLayout>
+    <!--<LinearLayout
             android:id="@+id/nav_top"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -126,6 +146,6 @@
             app:fab_colorRipple="@color/colorPrimary"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-    />
+    />-->
 
 </RelativeLayout>
