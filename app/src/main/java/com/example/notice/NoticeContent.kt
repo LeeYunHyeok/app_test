@@ -1,17 +1,11 @@
 package com.example.notice
 
-import android.app.Activity
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.notice_content.*
-import kotlinx.android.synthetic.main.notice_content_bottomsheet.*
 
 class NoticeContent : AppCompatActivity() {
     // 늦은 초기화
@@ -23,11 +17,16 @@ class NoticeContent : AppCompatActivity() {
         var num = FAdapter.num
         val myRef = FAdapter.db.getReference("notice/$num")
 
+        // 매뉴 버튼 클릭시 bottomsheet 생성 ( 수정 , 삭제 )
         btnConList.setOnClickListener {
             val bottomSheetDialogFragment = NoticeBottomSheet()
             bottomSheetDialogFragment.show(supportFragmentManager, bottomSheetDialogFragment.tag)
         }
 
+        // 액티비티 종료
+        btnConback.setOnClickListener{
+            finish()
+        }
         /*val btnNoticeUpdate = findViewById(R.id.btnNoticeUpdate) as Button
         btnNoticeUpdate.setOnClickListener {
 
@@ -53,6 +52,9 @@ class NoticeContent : AppCompatActivity() {
 
                 }*/
 
+                FAdapter.title = title
+                FAdapter.reason = reason
+
                 tvCon_title.setText("$title")
                 tvCon_con.setText("$reason")
                 tvCon_user.setText("$user")
@@ -66,6 +68,11 @@ class NoticeContent : AppCompatActivity() {
             }
         })
 
+    }
+
+    override fun onStop() {
+        super.onStop()
+        FAdapter.num = "0"
     }
 
 }

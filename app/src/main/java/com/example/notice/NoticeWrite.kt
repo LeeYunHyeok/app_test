@@ -24,21 +24,28 @@ class NoticeWrite : AppCompatActivity() {
         btn_back.setOnClickListener{
             finish()
         }
+        if(FAdapter.num.equals("0")){
+            noticeNum.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    val value = dataSnapshot?.value
+                    num = value.toString().toInt()
+                    noticeRef = FAdapter.db.getReference("notice/${(num+1)}")
 
-        noticeNum.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val value = dataSnapshot?.value
-                num = value.toString().toInt()
-                noticeRef = FAdapter.db.getReference("notice/${(num+1)}")
+                }
 
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                // Failed to read value
-                Log.w(TAG, "Failed to read value.", error.toException())
-            }
-        })
-
+                override fun onCancelled(error: DatabaseError) {
+                    // Failed to read value
+                    Log.w(TAG, "Failed to read value.", error.toException())
+                }
+            })
+        } else {
+            num = FAdapter.num.toInt()
+            tvWriteTitle.setText("공지사항 수정")
+            btn_notice_compl.setText("수정")
+            noticeRef = FAdapter.db.getReference("notice/$num")
+            et_notice_title.setText(FAdapter.title)
+            et_notice_con.setText(FAdapter.reason)
+        }
         btn_notice_compl.setOnClickListener {
             var etCheck = et_notice_title.text.toString().trim()
 
@@ -52,7 +59,6 @@ class NoticeWrite : AppCompatActivity() {
                 builder.show()
             } else {
 
-                noticeNum.setValue(++num)
                 var notice_title: String = et_notice_title.text.toString()
                 var notice_con: String = et_notice_con.text.toString()
                 val instance = Calendar.getInstance()
@@ -62,19 +68,29 @@ class NoticeWrite : AppCompatActivity() {
                 val hour = instance.get(Calendar.HOUR).toString()
                 val minu = instance.get(Calendar.MINUTE).toString()
                 val now = "$year/$month/$date $hour:$minu"
-                noticeRef.child("user_id").setValue("bsc2079")
-                noticeRef.child("flag").setValue(0)
-                noticeRef.child("count").setValue(0)
-                noticeRef.child("user").setValue("프렌트리")
                 noticeRef.child("title").setValue("$notice_title")
                 noticeRef.child("reason").setValue("$notice_con")
-                noticeRef.child("date").setValue("$now")
-
-                Toast.makeText(this, "게시글이 등록되었습니다", Toast.LENGTH_SHORT).show()
+                if(FAdapter.num.equals("0")){
+                    noticeNum.setValue(++num)
+                    noticeRef.child("date").setValue("$now")
+                    noticeRef.child("user_id").setValue("bsc2079")
+                    noticeRef.child("flag").setValue(0)
+                    noticeRef.child("count").setValue(0)
+                    noticeRef.child("user").setValue("프렌트리")
+                    Toast.makeText(this, "게시글이 등록되었습니다", Toast.LENGTH_SHORT).show()
+                } else {
+                    noticeRef.child("udate").setValue("$now")
+                    Toast.makeText(this, "게시글이 추가되었습니다", Toast.LENGTH_SHORT).show()
+                }
                 finish()
             }
 
         }
 
+    }
+
+    override fun onStop() {
+        super.onStop()
+        FAdapter.num = "0"
     }
 }
