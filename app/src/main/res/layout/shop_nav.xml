@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabTopAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:theme="@style/TabTheme">
+        <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabWork"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="업무관리"/>
+        <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabStaff"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="직원관리"/>
+        <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabSales"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="매출관리"/>
+        <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabDelivery"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="전달사항"/>
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <FrameLayout
+            android:id="@+id/fragShop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tabTopAdmin">
+    </FrameLayout>
+
+    <!--<RelativeLayout
+            android:id="@+id/rlMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tabTopAdmin">
+        <RelativeLayout
+                android:id="@+id/rlNotice"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="invisible">
+            <RelativeLayout
+                    android:id="@+id/rlDelivery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5.5dp"
+                    android:layout_centerHorizontal="true">
+                <Button
+                        android:id="@+id/btn_notice"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/btn_bg_down"
+                        android:textColor="#fff"
+                        android:text="공지사항"
+                        android:textStyle="bold"
+                        android:layout_alignParentTop="true" />
+                <Button
+                        android:id="@+id/btn_report"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/btn_bg_up"
+                        android:textColor="#707070"
+                        android:text="보고사항"
+                        android:layout_toRightOf="@id/btn_notice"/>
+
+
+            </RelativeLayout>
+
+            <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/vpNotice"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/rlDelivery"
+                    android:layout_marginTop="5dp">
+            </androidx.viewpager.widget.ViewPager>
+
+        </RelativeLayout>-->
+
+</RelativeLayout>
+
+        <!--
+        <RelativeLayout
+                android:id="@+id/rl_notice"
+                android:layout_below="@id/nav_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5.5dp"
+                android:layout_centerHorizontal="true">
+            <Button
+                    android:id="@+id/btn_notice"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/btn_bg_down"
+                    android:textColor="#fff"
+                    android:text="공지사항"
+                    android:textStyle="bold"
+                    android:layout_alignParentTop="true"
+            />
+            <Button
+                    android:id="@+id/btn_report"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/btn_bg_up"
+                    android:textColor="#707070"
+                    android:text="보고사항"
+                    android:layout_toRightOf="@id/btn_notice"/>
+        </RelativeLayout>
+        <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:fillViewport="true"
+                android:layout_below="@id/rl_notice">
+            <ListView
+                    android:id="@+id/lv_notice"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+        </ScrollView>
+        <com.melnykov.fab.FloatingActionButton
+                android:id="@+id/fab_write"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:layout_margin="16dp"
+                android:src="@drawable/ic_add_white_24dp"
+                app:fab_colorNormal="#0069c0"
+                app:fab_colorPressed="@color/colorPrimary"
+                app:fab_colorRipple="@color/colorPrimary"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+        />-->

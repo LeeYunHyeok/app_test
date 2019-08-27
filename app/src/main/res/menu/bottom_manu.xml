@@ -2,27 +2,32 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-            android:id="@+id/bottom_home"
+            android:id="@+id/bottomHome"
             android:enabled="true"
             android:icon="@drawable/baseline_home_24px"
             android:title="홈"/>
 
     <item
-            android:id="@+id/bottom_admin"
-            android:enabled="true"
-            android:icon="@drawable/baseline_alarm_24px"
-            android:title="관리"/>
-
-    <item
-            android:id="@+id/bottom_recruitment"
+            android:id="@+id/bottomStaff"
             android:enabled="true"
             android:icon="@drawable/baseline_supervisor_account_24px"
-            android:title="채용"
-            android:visible="true"/>
+            android:title="직원"/>
 
     <item
-            android:id="@+id/bottom_setting"
+            android:id="@+id/bottomAdmin"
+            android:enabled="true"
+            android:icon="@drawable/baseline_alarm_24px"
+            android:title="가게"/>
+
+    <item
+            android:id="@+id/bottomRecruitment"
+            android:enabled="true"
+            android:icon="@drawable/baseline_supervisor_account_24px"
+            android:title="일정"/>
+
+    <item
+            android:id="@+id/bottomSetting"
             android:enabled="true"
             android:icon="@drawable/baseline_settings_20px"
-            android:title="설정"/>
+            android:title="전체"/>
 </menu>

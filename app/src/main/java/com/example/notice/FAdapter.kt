@@ -10,6 +10,5 @@ class FAdapter {
         lateinit var title:String
         lateinit var reason:String
         lateinit var file:String
-        var nav:Int = R.menu.home_manu
     }
 }

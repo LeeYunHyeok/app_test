@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <com.google.android.material.tabs.TabLayout
+            android:layout_centerHorizontal="true"
+            android:id="@+id/tabTopJob"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:theme="@style/TabTheme">
+        <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabJobNotice"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="구인공고"/>
+        <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabJob"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="구직자"/>
+        <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabSchedule"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="면접일정"/>
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <FrameLayout
+            android:id="@+id/fragJob"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+    </FrameLayout>
+
+    <!--<RelativeLayout
+            android:id="@+id/rlMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tabTopJob">
+        <RelativeLayout
+                android:id="@+id/rlNotice"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="invisible">
+            <RelativeLayout
+                    android:id="@+id/rlJobNotice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5.5dp"
+                    android:layout_centerHorizontal="true">
+                <Button
+                        android:id="@+id/btnAnnounce"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/btn_bg_down"
+                        android:textColor="#fff"
+                        android:text="공고중"
+                        android:textStyle="bold"
+                        android:layout_alignParentTop="true" />
+                <Button
+                        android:id="@+id/btnEnd"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/btn_bg_up"
+                        android:textColor="#707070"
+                        android:text="종료"
+                        android:layout_toRightOf="@id/btnAnnounce"/>
+
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>-->
+
+    <!--
+    <RelativeLayout
+            android:id="@+id/rl_notice"
+            android:layout_below="@id/nav_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5.5dp"
+            android:layout_centerHorizontal="true">
+        <Button
+                android:id="@+id/btn_notice"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:background="@drawable/btn_bg_down"
+                android:textColor="#fff"
+                android:text="공지사항"
+                android:textStyle="bold"
+                android:layout_alignParentTop="true"
+        />
+        <Button
+                android:id="@+id/btn_report"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:background="@drawable/btn_bg_up"
+                android:textColor="#707070"
+                android:text="보고사항"
+                android:layout_toRightOf="@id/btn_notice"/>
+    </RelativeLayout>
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:fillViewport="true"
+            android:layout_below="@id/rl_notice">
+        <ListView
+                android:id="@+id/lv_notice"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+    </ScrollView>
+    <com.melnykov.fab.FloatingActionButton
+            android:id="@+id/fab_write"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_add_white_24dp"
+            app:fab_colorNormal="#0069c0"
+            app:fab_colorPressed="@color/colorPrimary"
+            app:fab_colorRipple="@color/colorPrimary"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+    />-->
+
+</RelativeLayout>

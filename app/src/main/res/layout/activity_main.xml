@@ -7,14 +7,42 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity"
         android:orientation="vertical">
+    <!--<com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabTop"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:theme="@style/TabTheme">
+        <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabOne"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="업무관리"/>
+        <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabTwo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="직원관리"/>
+        <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabThree"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="매출관리"/>
+        <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabFour"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="전달사항"/>
+
+    </com.google.android.material.tabs.TabLayout>-->
 
     <FrameLayout
-            android:id="@+id/fragment"
+            android:id="@+id/fragMain"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@id/bottom_navi">
 
     </FrameLayout>
+
 
     <!--<LinearLayout
             android:layout_width="match_parent"
@@ -143,7 +171,7 @@
             android:id="@+id/bottom_navi"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="#03a9f4"
+            android:background="#fff"
             app:itemIconTint="@color/bottom_color"
             app:itemTextColor="@color/bottom_color"
             android:layout_alignParentBottom="true"

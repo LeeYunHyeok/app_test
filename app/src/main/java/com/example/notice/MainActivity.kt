@@ -1,22 +1,12 @@
 package com.example.notice
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.view.Window
-import android.widget.AdapterView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.FirebaseApp
-import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.activity_main.*
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.ValueEventListener
-import kotlinx.android.synthetic.main.top_nav.*
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -29,12 +19,10 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main)
 
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment, NoticeFragment())
-            .commit()
-
         val bottom_navi = findViewById<View>(R.id.bottom_navi) as BottomNavigationView
         bottom_navi.setOnNavigationItemSelectedListener(this)
+
+
 /*
 
         val noticeAdapter = NoticeListAdapter(this, noticeList)
@@ -95,32 +83,22 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     }
 
     override fun onNavigationItemSelected(p0: MenuItem): Boolean {
-        when(p0.itemId){
-            R.id.bottom_home ->{
-                FAdapter.nav = R.menu.home_manu
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment, NoticeFragment())
-                    .commit()
-                /*val fragmentA = FragmentA()
-                supportFragmentManager.beginTransaction().replace(R.id.fragment_container,fragmentA).commit()*/
+        when (p0.itemId) {
+            R.id.bottomHome -> {
             }
-            R.id.bottom_admin -> {
-                FAdapter.nav = R.menu.admin_manu
+            R.id.bottomStaff -> {
                 supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment, NoticeFragment())
+                    .replace(R.id.fragMain, WeFragment())
                     .commit()
             }
-            R.id.bottom_recruitment -> {
-                FAdapter.nav = R.menu.recruitment_manu
+            R.id.bottomAdmin -> {
                 supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment, NoticeFragment())
+                    .replace(R.id.fragMain, AdminFragment())
                     .commit()
             }
-            R.id.bottom_setting -> {
-                FAdapter.nav = R.menu.setting_manu
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment, NoticeFragment())
-                    .commit()
+            R.id.bottomRecruitment -> {
+            }
+            R.id.bottomSetting -> {
             }
         }
         return true

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <RelativeLayout
+            android:id="@+id/rlNotice"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <RelativeLayout
+                android:id="@+id/rlDelivery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5.5dp"
+                android:layout_centerHorizontal="true">
+            <Button
+                    android:id="@+id/btn_notice"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/btn_bg_down"
+                    android:textColor="#fff"
+                    android:text="공지사항"
+                    android:textStyle="bold"
+                    android:layout_alignParentTop="true" />
+            <Button
+                    android:id="@+id/btn_report"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/btn_bg_up"
+                    android:textColor="#707070"
+                    android:text="보고사항"
+                    android:layout_toRightOf="@id/btn_notice"/>
+
+
+        </RelativeLayout>
+
+        <androidx.viewpager.widget.ViewPager
+                android:id="@+id/vpNotice"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/rlDelivery"
+                android:layout_marginTop="5dp">
+        </androidx.viewpager.widget.ViewPager>
+
+    </RelativeLayout>
+</RelativeLayout>
