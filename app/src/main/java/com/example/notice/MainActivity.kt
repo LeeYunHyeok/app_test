@@ -5,100 +5,43 @@ import android.view.MenuItem
 import android.view.View
 import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
-    var noticeList = arrayListOf<Notice>()
-    private val TAG = "Kotlin Firebase : "
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        /* 타이틀 x */
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main)
 
-        val bottom_navi = findViewById<View>(R.id.bottom_navi) as BottomNavigationView
-        bottom_navi.setOnNavigationItemSelectedListener(this)
-
-
-/*
-
-        val noticeAdapter = NoticeListAdapter(this, noticeList)
-        lv_notice.adapter = noticeAdapter
-
-        val myRef = FAdapter.db.getReference("notice")
-
-        fab_write.setOnClickListener{
-            val intent = Intent(this, NoticeWrite::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
-            startActivity(intent)
-        }
-
-        lv_notice.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
-            val intent = Intent(this, NoticeContent::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-            intent.putExtra("num", noticeList[position].no_num)
-            startActivity(intent)
-
-        }
-
-        myRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-
-                noticeList.clear()
-                var title:String
-                var num:String
-                var date:String
-                var reason:String
-                var user:String
-                var flag:String
-                *//*var user_id:String = ""*//*
-
-                for( value in dataSnapshot.children){
-                    num = value.key.toString()
-                    title = value.child("title").value.toString()
-                    reason = value.child("reason").value.toString()
-                    user = value.child("user").value.toString()
-                    date = value.child("date").value.toString()
-                    flag = value.child("flag").value.toString()
-                    *//*user_id = value.child("user_id").value.toString()*//*
-                    if(!flag.equals("2"))
-                        noticeList.add(Notice(title,reason,num,date,user))
-
-                }
-                noticeAdapter.notifyDataSetChanged()
-
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                // Failed to read value
-                Log.w(TAG, "Failed to read value.", error.toException())
-            }
-        })*/
+        val bottomNavi = findViewById<View>(R.id.bottomNavi) as BottomNavigationView
+        /* bottomnavigation 아이템 클릭 리스너 */
+        bottomNavi.setOnNavigationItemSelectedListener(this)
 
     }
 
+    // Bottom Navigation 버튼 클릭 이벤트
     override fun onNavigationItemSelected(p0: MenuItem): Boolean {
+        /*클릭한 Bottom Navigation 의 액션 처리*/
         when (p0.itemId) {
             R.id.bottomHome -> {
+
             }
             R.id.bottomStaff -> {
+                /* framLayout에 fragment 띄우기*/
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragMain, StaffFragment())
+                    .commit()
+            }
+            R.id.bottomSales -> {
                 supportFragmentManager.beginTransaction()
                     .replace(R.id.fragMain, WeFragment())
                     .commit()
             }
-            R.id.bottomAdmin -> {
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragMain, AdminFragment())
-                    .commit()
+            R.id.bottomSchdule -> {
             }
-            R.id.bottomRecruitment -> {
-            }
-            R.id.bottomSetting -> {
+            R.id.bottomAll -> {
             }
         }
         return true

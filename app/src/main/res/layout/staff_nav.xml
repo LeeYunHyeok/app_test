@@ -6,7 +6,7 @@
         android:layout_height="match_parent">
 
     <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabTopAdmin"
+            android:id="@+id/tabTopStaff"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:theme="@style/TabTheme">
@@ -14,17 +14,17 @@
                 android:id="@+id/tabWork"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:text="업무관리"/>
+                android:text="근무현황"/>
         <com.google.android.material.tabs.TabItem
-                android:id="@+id/tabStaff"
+                android:id="@+id/tabBusiness"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:text="직원관리"/>
+                android:text="업무현황"/>
         <com.google.android.material.tabs.TabItem
-                android:id="@+id/tabSales"
+                android:id="@+id/tabRecruitment"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:text="매출관리"/>
+                android:text="채용현황"/>
         <com.google.android.material.tabs.TabItem
                 android:id="@+id/tabDelivery"
                 android:layout_width="0dp"
@@ -37,7 +37,7 @@
             android:id="@+id/fragShop"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/tabTopAdmin">
+            android:layout_below="@id/tabTopStaff">
     </FrameLayout>
 
     <!--<RelativeLayout

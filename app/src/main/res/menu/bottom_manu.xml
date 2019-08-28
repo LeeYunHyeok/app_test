@@ -4,7 +4,7 @@
     <item
             android:id="@+id/bottomHome"
             android:enabled="true"
-            android:icon="@drawable/baseline_home_24px"
+            android:icon="@drawable/ic_face_24px"
             android:title="홈"/>
 
     <item
@@ -14,20 +14,20 @@
             android:title="직원"/>
 
     <item
-            android:id="@+id/bottomAdmin"
+            android:id="@+id/bottomSales"
             android:enabled="true"
-            android:icon="@drawable/baseline_alarm_24px"
-            android:title="가게"/>
+            android:icon="@drawable/pass_2113"
+            android:title="매출"/>
 
     <item
-            android:id="@+id/bottomRecruitment"
+            android:id="@+id/bottomSchdule"
             android:enabled="true"
-            android:icon="@drawable/baseline_supervisor_account_24px"
+            android:icon="@drawable/ic_insert_invitation_24px"
             android:title="일정"/>
 
     <item
-            android:id="@+id/bottomSetting"
+            android:id="@+id/bottomAll"
             android:enabled="true"
-            android:icon="@drawable/baseline_settings_20px"
+            android:icon="@drawable/pass_2112"
             android:title="전체"/>
 </menu>

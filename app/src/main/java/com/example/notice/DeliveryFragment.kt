@@ -23,6 +23,7 @@ class DeliveryFragment: Fragment(){
         val view = inflater.inflate(R.layout.delivery_main, null)
         var main_adapter = DeliveryPagerAdapter(childFragmentManager)
         view.vpNotice.adapter = main_adapter
+        view.
         // 처리
         return view
     }

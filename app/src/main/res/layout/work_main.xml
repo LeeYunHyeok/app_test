@@ -3,37 +3,37 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
     <RelativeLayout
-            android:id="@+id/rlDelivery"
+            android:id="@+id/rlWork"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5.5dp"
             android:layout_centerHorizontal="true">
         <Button
-                android:id="@+id/btn_notice"
+                android:id="@+id/btnWorkState"
                 android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:background="@drawable/btn_bg_down"
                 android:textColor="#fff"
-                android:text="공지사항"
+                android:text="업무상태별"
                 android:textStyle="bold"
                 android:layout_alignParentTop="true"/>
         <Button
-                android:id="@+id/btn_report"
+                android:id="@+id/btnEmpState"
                 android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:background="@drawable/btn_bg_up"
                 android:textColor="#707070"
-                android:text="보고사항"
-                android:layout_toRightOf="@id/btn_notice"/>
+                android:text="직원별 업무"
+                android:layout_toRightOf="@id/btnWorkState"/>
 
 
     </RelativeLayout>
 
     <androidx.viewpager.widget.ViewPager
-            android:id="@+id/vpNotice"
+            android:id="@+id/vpWork"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/rlDelivery"
+            android:layout_below="@id/rlWork"
             android:layout_marginTop="5dp">
     </androidx.viewpager.widget.ViewPager>
 

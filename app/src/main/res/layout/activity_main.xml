@@ -39,7 +39,7 @@
             android:id="@+id/fragMain"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@id/bottom_navi">
+            android:layout_above="@id/bottomNavi">
 
     </FrameLayout>
 
@@ -168,7 +168,7 @@
             android:layout_above="@id/bottom_navi"/> -->
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottom_navi"
+            android:id="@+id/bottomNavi"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="#fff"

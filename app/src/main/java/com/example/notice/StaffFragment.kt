@@ -7,13 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import com.google.android.material.tabs.TabLayout
-import kotlinx.android.synthetic.main.shop_nav.*
-import kotlinx.android.synthetic.main.shop_nav.view.*
+import kotlinx.android.synthetic.main.staff_nav.view.*
 
 
-class AdminFragment: Fragment(){
+class StaffFragment: Fragment(){
     var mContext: Context? = null
     val TAG = "position ==========>"
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,8 +21,9 @@ class AdminFragment: Fragment(){
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.shop_nav, null)
-        view.tabTopAdmin.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+        /* 레이아웃 inflate 시켜줌 : 실제 객체화*/
+        val view = inflater.inflate(R.layout.staff_nav, null)
+        view.tabTopStaff.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
 
             override fun onTabReselected(tab: TabLayout.Tab?) {
             }
@@ -33,6 +32,7 @@ class AdminFragment: Fragment(){
             }
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
+                /* tab을 클릭시 tab의 위치를 갖고 옴*/
                 var pos = tab?.position
                 Log.w(TAG, pos.toString())
                 changeView(pos)
@@ -43,17 +43,19 @@ class AdminFragment: Fragment(){
         return view
     }
 
+    /* 상단 tab 메뉴 띄우기*/
     private fun changeView(pos: Int?) {
+        /* 클릭한 tab의 액션 처리*/
         when(pos){
             0 -> {
             }
             1 -> {
             }
             2 -> {
-                var main_adapter = DeliveryPagerAdapter(childFragmentManager)
+                /*var main_adapter = DeliveryPagerAdapter(childFragmentManager)
                 childFragmentManager.beginTransaction()
                     .replace(R.id.fragShop, DeliveryFragment())
-                    .commit()
+                    .commit()*/
             }
             3 -> {
                 childFragmentManager.beginTransaction()
