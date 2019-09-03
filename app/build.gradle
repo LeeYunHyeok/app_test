@@ -4,7 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 28
-    buildToolsVersion "29.0.1"
+    buildToolsVersion "28.0.3"
     defaultConfig {
         applicationId "com.example.notice"
         minSdkVersion 21
@@ -18,10 +18,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+
     }
-    dataBinding(
-            enabled: true
-    )
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
