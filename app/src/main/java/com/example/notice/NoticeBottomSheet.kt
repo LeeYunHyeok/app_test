@@ -38,7 +38,8 @@ class NoticeBottomSheet: BottomSheetDialogFragment(){
             builder.setMessage("삭제되는 공지사항은 저장되지 않습니다")
             builder.setPositiveButton("취소"){ _,_->}
             builder.setNegativeButton("삭제"){_,_->
-                noticeRef.child("flag").setValue(2)
+                noticeRef.removeValue()
+                /*noticeRef.child("flag").setValue(2)*/
                 Toast.makeText(context, "게시글이 삭제되었습니다", Toast.LENGTH_SHORT).show()
                 dismiss()
                 (mContext as Activity).finish()

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="wrap_content">
@@ -7,16 +7,19 @@
             android:id="@+id/btnNoticeUpdate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#fff"
+            android:background="#ffffff"
             android:text="수정"
+            android:drawableLeft="@drawable/ic_create_24px"
             android:textAlignment="textStart"
             android:paddingLeft="20dp"/>
     <Button
+            android:layout_below="@id/btnNoticeUpdate"
             android:id="@+id/btnNoticeDelete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#fff"
+            android:background="#ffffff"
             android:text="삭제"
+            android:drawableLeft="@drawable/ic_delete_24px"
             android:textAlignment="textStart"
             android:paddingLeft="20dp"/>
-</LinearLayout>
+</RelativeLayout>

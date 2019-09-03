@@ -13,7 +13,7 @@ class DeliveryPagerAdapter: FragmentPagerAdapter{
     // 초기화 ArrayList에 Fragment로 설정된 레이아웃들을 저장
     var mData : ArrayList<Fragment> = arrayListOf(data1,data2)
 
-
+    /*필수 생성자*/
     constructor(fm : FragmentManager) : super(fm){}
 
     override fun getItem(position: Int): Fragment {
