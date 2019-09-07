@@ -8,7 +8,7 @@ class DeliveryPagerAdapter: FragmentPagerAdapter{
 
     // 객체 생성
     var data1 : Fragment = NoticeFragment()
-    var data2 : Fragment = NoticeFragment()
+    var data2 : Fragment = ReportFragment()
 
     // 초기화 ArrayList에 Fragment로 설정된 레이아웃들을 저장
     var mData : ArrayList<Fragment> = arrayListOf(data1,data2)

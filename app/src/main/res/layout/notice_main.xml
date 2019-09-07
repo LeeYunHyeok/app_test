@@ -6,22 +6,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity"
-        android:orientation="vertical">
+        android:orientation="vertical"><!--
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
             android:fillViewport="true">
-        <!--<ListView
+        &lt;!&ndash;<ListView
                 android:id="@+id/lvNotice"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>-->
+                android:layout_height="match_parent"/>&ndash;&gt;-->
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcvNoticeList"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
         </androidx.recyclerview.widget.RecyclerView>
 
-    </ScrollView>
+    <!--</ScrollView>-->
     <com.melnykov.fab.FloatingActionButton
             android:id="@+id/fabNoticeWrite"
             android:layout_width="wrap_content"

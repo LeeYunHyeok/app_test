@@ -4,10 +4,11 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class RecyclerNoticeListAdapter(val context: Context, val noticeList: ArrayList<NoticeDTO>) : RecyclerView.Adapter<RecyclerNoticeListAdapter.Holder>() {
+class RecyclerReportListAdapter(val context: Context, val reportList: ArrayList<ReportDTO>) : RecyclerView.Adapter<RecyclerReportListAdapter.Holder>() {
     private val TYPE_HEADER = 0
     private val TYPE_ITEM = 1
     private val TYPE_FOOTER = 2
@@ -26,7 +27,7 @@ class RecyclerNoticeListAdapter(val context: Context, val noticeList: ArrayList<
     }
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): Holder {
-        val view = LayoutInflater.from(context).inflate(R.layout.item_notice, p0, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.item_report, p0, false)
         return Holder(view)
     }
 
@@ -41,25 +42,25 @@ class RecyclerNoticeListAdapter(val context: Context, val noticeList: ArrayList<
     }
 
     override fun getItemCount(): Int {
-        return noticeList.size
+        return reportList.size
     }
 
     override fun onBindViewHolder(p0: Holder, p1: Int) {
-        p0.bind(noticeList[p1])
+        p0.bind(reportList[p1])
     }
 
 
     inner class Holder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
-        private val tv_no_num = itemView?.findViewById<TextView>(R.id.tv_no_num)
-        private val tv_no_title = itemView?.findViewById<TextView>(R.id.tv_no_title)
-        private val tv_no_person = itemView?.findViewById<TextView>(R.id.tv_no_person)
-        private val tv_no_date = itemView?.findViewById<TextView>(R.id.tv_no_date)
+        private val imgReport = itemView?.findViewById<ImageView>(R.id.imgReport)
+        private val tvReportTitle = itemView?.findViewById<TextView>(R.id.tvReportTitle)
+        private val tvReportDate = itemView?.findViewById<TextView>(R.id.tvReportDate)
+        private val tvReportUser = itemView?.findViewById<TextView>(R.id.tvReportUser)
 
-        fun bind(notice: NoticeDTO) {
-            tv_no_num?.text = notice.no_num.toString()
-            tv_no_title?.text = notice.no_title.toString()
-            tv_no_person?.text = notice.no_person.toString()
-            tv_no_date?.text = notice.no_date.toString()
+        fun bind(report: ReportDTO) {
+            imgReport?.setImageResource(R.drawable.baseline_alarm_24px)
+            tvReportTitle?.text = report.reportTitle.toString()
+            tvReportDate?.text = report.reportDate.toString()
+            tvReportUser?.text = report.reportUser.toString()
         }
 
     }

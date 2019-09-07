@@ -7,11 +7,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.notice.databinding.ItemNoticeBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -22,19 +20,21 @@ import kotlinx.android.synthetic.main.notice_main.view.*
 * 실제 공지사항 데이터
 *
 */
-class NoticeFragment: Fragment(){
+class NoticeFragment : Fragment() {
     var mContext: Context? = null
     var noticeList = arrayListOf<NoticeDTO>()
     private val TAG = "Kotlin Firebase : "
-    var count:Int = 7
-    var footer:View? = null
+    var count: Int = 10
+    var footer: View? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val view = inflater.inflate(R.layout.notice_main, null)
         val noticeAdapter = RecyclerNoticeListAdapter(view.context, noticeList)
         footer = layoutInflater.inflate(R.layout.notice_footer, null, false)
@@ -46,54 +46,102 @@ class NoticeFragment: Fragment(){
 
         val layoutManager = LinearLayoutManager(context)
         view.rcvNoticeList.layoutManager = layoutManager
-        view.fabNoticeWrite.setOnClickListener{
+        view.fabNoticeWrite.setOnClickListener {
             val intent = Intent(context, NoticeWrite::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+
             startActivity(intent)
         }
-        /*noticeAdapter.setItemClickListener(object : RecyclerNoticeListAdapter.ItemClickListener{
+        noticeAdapter.setItemClickListener(object : RecyclerNoticeListAdapter.ItemClickListener {
             override fun onClick(view: View, position: Int) {
                 val intent = Intent(context, NoticeContent::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 intent.putExtra("num", noticeList[position].no_num)
                 startActivity(intent)
             }
-        })*/
+        })
 
-        view.rcvNoticeList.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+        view.rcvNoticeList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
-                Log.d("aaaaaaaaaaaaaaaaaaa", "")
+                val lastVisibleItemPosition =
+                    (recyclerView.layoutManager as LinearLayoutManager).findLastCompletelyVisibleItemPosition()
+                val totalItemCount = recyclerView!!.layoutManager?.itemCount!! - 1
+                if (lastVisibleItemPosition == totalItemCount) {
+                    // Toast.makeText(context, "$count ,,,,, ${noticeList.size}", Toast.LENGTH_SHORT).show()
+                    if (count <= (noticeList.size + 1)) {
+                        count = count + 5
+                        myRef.limitToLast(count)
+                            .addValueEventListener(object : ValueEventListener {
+                                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                    // This method is called once with the initial value and again
+                                    // whenever data at this location is updated.
+
+                                    noticeList.clear()
+                                    var title: String
+                                    var num: String
+                                    var date: String
+                                    var reason: String
+                                    var user: String
+                                    var flag: String
+                                    /*var user_id:String = ""*/
+
+                                    for (value in dataSnapshot.children) {
+                                        num = value.key.toString()
+                                        title = ". " + value.child("title").value.toString()
+                                        reason = value.child("reason").value.toString()
+                                        user = value.child("user").value.toString()
+                                        date = value.child("date").value.toString()
+                                        flag = value.child("flag").value.toString()
+                                        /*user_id = value.child("user_id").value.toString()*/
+                                        if (!flag.equals("2"))
+                                            noticeList.add(0,NoticeDTO(title,reason,num,date,user))
+
+                                    }
+                                    noticeAdapter.notifyDataSetChanged()
+                                }
+
+
+                                override fun onCancelled(error: DatabaseError) {
+                                    // Failed to read value
+                                    Log.w(TAG, "Failed to read value.", error.toException())
+                                }
+                            })
+                    }
+                }
+
+            }
+
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
             }
         })
 
-        myRef.limitToFirst(count).addValueEventListener(object : ValueEventListener {
+        myRef.limitToLast(count).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
 
                 noticeList.clear()
-                var title:String
-                var num:String
-                var date:String
-                var reason:String
-                var user:String
-                var flag:String
+                var title: String
+                var num: String
+                var date: String
+                var reason: String
+                var user: String
+                var flag: String
                 /*var user_id:String = ""*/
 
-                for( value in dataSnapshot.children){
+                for (value in dataSnapshot.children) {
                     num = value.key.toString()
-                    title = value.child("title").value.toString()
+                    title = ". " + value.child("title").value.toString()
                     reason = value.child("reason").value.toString()
                     user = value.child("user").value.toString()
                     date = value.child("date").value.toString()
                     flag = value.child("flag").value.toString()
                     /*user_id = value.child("user_id").value.toString()*/
-                    if(!flag.equals("2"))
-                        noticeList.add(NoticeDTO(title,reason,num,date,user))
+                    if (!flag.equals("2"))
+                        noticeList.add(0,NoticeDTO(title, reason, num, date, user))
 
-                }
-                if(noticeList.size >= (count-1)) {
                 }
                 noticeAdapter.notifyDataSetChanged()
 
@@ -144,7 +192,6 @@ class NoticeFragment: Fragment(){
     }*/
 
 }
-
 
 
 /*view.rcvNoticeList.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->

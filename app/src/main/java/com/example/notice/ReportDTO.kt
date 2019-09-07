@@ -1,3 +1,3 @@
 package com.example.notice
 
-data class NoticeDTO(val no_title:String, val no_reason:String, val no_num:String, val no_date:String, val no_person:String)
+data class ReportDTO(val reportNum:String, val reportTitle:String, val reportDate:String, val reportUser:String, val reportReason:String, val reportImage:String)

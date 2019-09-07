@@ -13,16 +13,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-import kotlinx.android.synthetic.main.notice_main.view.*
+import kotlinx.android.synthetic.main.report_main.view.*
 
 
 /*
 * 실제 공지사항 데이터
 *
 */
-class NoticeFragment : Fragment() {
+class ReportFragment : Fragment() {
     var mContext: Context? = null
-    var noticeList = arrayListOf<NoticeDTO>()
+    var reportList = arrayListOf<ReportDTO>()
     private val TAG = "Kotlin Firebase : "
     var count: Int = 10
     var footer: View? = null
@@ -35,33 +35,33 @@ class NoticeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.notice_main, null)
-        val noticeAdapter = RecyclerNoticeListAdapter(view.context, noticeList)
-        footer = layoutInflater.inflate(R.layout.notice_footer, null, false)
+        val view = inflater.inflate(R.layout.report_main, null)
+        val reportAdapter = RecyclerReportListAdapter(view.context, reportList)
+        //footer = layoutInflater.inflate(R.layout.notice_footer, null, false)
 
-        val myRef = FAdapter.db.getReference("notice")
+        val myRef = FAdapter.db.getReference("report")
 
-        view.rcvNoticeList.adapter = noticeAdapter
-        view.rcvNoticeList.setHasFixedSize(true)
+        view.rcvReportList.adapter = reportAdapter
+        view.rcvReportList.setHasFixedSize(true)
 
         val layoutManager = LinearLayoutManager(context)
-        view.rcvNoticeList.layoutManager = layoutManager
-        view.fabNoticeWrite.setOnClickListener {
+        view.rcvReportList.layoutManager = layoutManager
+        /*view.fabRepotWrite.setOnClickListener {
             val intent = Intent(context, NoticeWrite::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
 
             startActivity(intent)
-        }
-        noticeAdapter.setItemClickListener(object : RecyclerNoticeListAdapter.ItemClickListener {
+        }*/
+        reportAdapter.setItemClickListener(object : RecyclerReportListAdapter.ItemClickListener {
             override fun onClick(view: View, position: Int) {
                 val intent = Intent(context, NoticeContent::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                intent.putExtra("num", noticeList[position].no_num)
+                intent.putExtra("num", reportList[position].reportNum)
                 startActivity(intent)
             }
         })
 
-        view.rcvNoticeList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+        view.rcvReportList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 val lastVisibleItemPosition =
@@ -69,7 +69,7 @@ class NoticeFragment : Fragment() {
                 val totalItemCount = recyclerView!!.layoutManager?.itemCount!! - 1
                 if (lastVisibleItemPosition == totalItemCount) {
                     // Toast.makeText(context, "$count ,,,,, ${noticeList.size}", Toast.LENGTH_SHORT).show()
-                    if (count <= (noticeList.size + 1)) {
+                    if (count <= (reportList.size + 1)) {
                         count = count + 5
                         myRef.limitToLast(count)
                             .addValueEventListener(object : ValueEventListener {
@@ -77,28 +77,27 @@ class NoticeFragment : Fragment() {
                                     // This method is called once with the initial value and again
                                     // whenever data at this location is updated.
 
-                                    noticeList.clear()
+                                    reportList.clear()
                                     var title: String
                                     var num: String
                                     var date: String
                                     var reason: String
                                     var user: String
-                                    var flag: String
+                                    var image: String
                                     /*var user_id:String = ""*/
 
                                     for (value in dataSnapshot.children) {
                                         num = value.key.toString()
-                                        title = ". " + value.child("title").value.toString()
+                                        title = value.child("title").value.toString()
                                         reason = value.child("reason").value.toString()
                                         user = value.child("user").value.toString()
                                         date = value.child("date").value.toString()
-                                        flag = value.child("flag").value.toString()
+                                        image = value.child("image").value.toString()
                                         /*user_id = value.child("user_id").value.toString()*/
-                                        if (!flag.equals("2"))
-                                            noticeList.add(0,NoticeDTO(title,reason,num,date,user))
+                                        reportList.add(0,ReportDTO(num,title,date,user,reason,image))
 
                                     }
-                                    noticeAdapter.notifyDataSetChanged()
+                                    reportAdapter.notifyDataSetChanged()
                                 }
 
 
@@ -122,28 +121,28 @@ class NoticeFragment : Fragment() {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
 
-                noticeList.clear()
+                reportList.clear()
                 var title: String
                 var num: String
                 var date: String
                 var reason: String
                 var user: String
-                var flag: String
+                var image: String
                 /*var user_id:String = ""*/
 
                 for (value in dataSnapshot.children) {
                     num = value.key.toString()
-                    title = ". " + value.child("title").value.toString()
+                    title = value.child("title").value.toString()
                     reason = value.child("reason").value.toString()
                     user = value.child("user").value.toString()
                     date = value.child("date").value.toString()
-                    flag = value.child("flag").value.toString()
                     /*user_id = value.child("user_id").value.toString()*/
-                    if (!flag.equals("2"))
-                        noticeList.add(0,NoticeDTO(title, reason, num, date, user))
+                    image = value.child("image").value.toString()
+                    /*user_id = value.child("user_id").value.toString()*/
+                    reportList.add(0,ReportDTO(num,title,date,user,reason,image))
 
                 }
-                noticeAdapter.notifyDataSetChanged()
+                reportAdapter.notifyDataSetChanged()
 
             }
 

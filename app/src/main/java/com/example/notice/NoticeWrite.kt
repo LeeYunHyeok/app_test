@@ -6,9 +6,14 @@ import android.view.ContextThemeWrapper
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.database.*
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.notice_write.*
 import java.util.*
+import java.text.SimpleDateFormat
+
 
 class NoticeWrite : AppCompatActivity() {
     private val KEY_NOTICE = "notice"
@@ -58,16 +63,12 @@ class NoticeWrite : AppCompatActivity() {
 
                 builder.show()
             } else {
+                val dt = Date()
+                val full_sdf = SimpleDateFormat("yyyy/MM/dd, a hh:mm")
+                var now = full_sdf.format(dt).toString()
 
                 var notice_title: String = et_notice_title.text.toString()
                 var notice_con: String = et_notice_con.text.toString()
-                val instance = Calendar.getInstance()
-                val year = instance.get(Calendar.YEAR).toString()
-                val month = (instance.get(Calendar.MONTH) + 1).toString()
-                val date = instance.get(Calendar.DATE).toString()
-                val hour = instance.get(Calendar.HOUR).toString()
-                val minu = instance.get(Calendar.MINUTE).toString()
-                val now = "$year/$month/$date $hour:$minu"
                 noticeRef.child("title").setValue("$notice_title")
                 noticeRef.child("reason").setValue("$notice_con")
                 if(FAdapter.num.equals("0")){

@@ -1,6 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/rv_list_notice"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="65dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="3dp"
+        android:background="@drawable/rv_item">
 
-</LinearLayout>
+    <ImageView
+            android:id="@+id/imgReport"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp" />
+
+    <LinearLayout
+            android:id="@+id/linearReport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/imgReport"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp">
+
+        <TextView
+                android:id="@+id/tvReportTitle"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="타이틀"
+                android:textColor="#000"
+                android:textSize="17sp"/>
+
+        <TextView
+                android:id="@+id/tvReportDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:layout_marginTop="7dp"
+                android:text="날짜"/>
+
+    </LinearLayout>
+
+    <TextView
+            android:id="@+id/tvReportUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:text="작성자"
+            android:textSize="12sp" />
+
+</RelativeLayout>

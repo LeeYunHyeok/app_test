@@ -3,17 +3,16 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".RepotingActivity">
+        android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcvNoticeList"
+            android:id="@+id/rcvReportList"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
     </androidx.recyclerview.widget.RecyclerView>
 
     <!--</ScrollView>-->
-    <com.melnykov.fab.FloatingActionButton
+   <!-- <com.melnykov.fab.FloatingActionButton
             android:id="@+id/fabRepotWrite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -24,6 +23,6 @@
             app:fab_colorPressed="@color/colorPrimary"
             app:fab_colorRipple="@color/colorPrimary"
             android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"/>
+            android:layout_alignParentBottom="true"/>-->
 
 </RelativeLayout>

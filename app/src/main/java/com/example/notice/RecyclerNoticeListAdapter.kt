@@ -64,6 +64,7 @@ class RecyclerNoticeListAdapter(val context: Context, val noticeList: ArrayList<
 
     }
 
+}
 
 
 /*BaseAdapter() {
@@ -104,4 +105,3 @@ class RecyclerNoticeListAdapter(val context: Context, val noticeList: ArrayList<
         return noticeList.size
     }
 */
-}

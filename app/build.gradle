@@ -20,9 +20,23 @@ android {
         }
 
     }
-    dataBinding {
+    /*dataBinding {
         enabled = true
-    }
+    }*/
+
+    /*sourceSets {
+        main {
+            res.srcDirs = [
+                    'src/main/res/layouts/home',
+                    'src/main/res/layouts/staff',
+                    'src/main/res/layouts/sales',
+                    'src/main/res/layouts/schdule',
+                    'src/main/res/layouts/all',
+                    'src/main/res/layouts',
+                    'src/main/res'
+            ]
+        }
+    }*/
 }
 
 dependencies {
