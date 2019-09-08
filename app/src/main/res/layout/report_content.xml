@@ -9,7 +9,7 @@
         android:orientation="vertical">
 
     <RelativeLayout
-            android:id="@+id/layoutCon_top"
+            android:id="@+id/layoutReportConTop"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:orientation="horizontal"
@@ -17,7 +17,7 @@
             android:layout_alignParentTop="true">
 
         <Button
-                android:id="@+id/btnConback"
+                android:id="@+id/btnReportBack"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_alignParentLeft="true"
@@ -28,20 +28,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="보고사항"
-                android:layout_toRightOf="@id/btnConback"
+                android:layout_toRightOf="@id/btnReportBack"
                 android:layout_marginLeft="30dp"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:gravity="center"
                 android:textColor="#fff"/>
-        <Button
-                android:id="@+id/btnConList"
+        <!--<Button
+                android:id="@+id/btnReportList"
                 android:layout_width="12dp"
                 android:layout_height="24dp"
                 android:layout_marginRight="16dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:background="@drawable/ic_more_vert_white"/>
+                android:background="@drawable/ic_more_vert_white"/>-->
     </RelativeLayout>
     <RelativeLayout
             android:layout_width="match_parent"
@@ -55,14 +55,14 @@
                     android:layout_height="match_parent">
 
                 <RelativeLayout
-                        android:id="@+id/layoutCon_title"
+                        android:id="@+id/layoutReportConTitle"
                         android:layout_width="340dp"
                         android:layout_height="70dp"
                         android:layout_centerHorizontal="true"
                         android:layout_alignParentTop="true">
 
                     <TextView
-                            android:id="@+id/tvCon_title"
+                            android:id="@+id/tvReportConTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="글제목"
@@ -77,24 +77,24 @@
                             android:layout_alignParentBottom="true"
                             android:background="#707070"/>
                     <TextView
-                            android:id="@+id/tvCon_date"
+                            android:id="@+id/tvReportConDate"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="작성일"
                             android:textSize="13sp"
-                            android:layout_below="@id/tvCon_title"
+                            android:layout_below="@id/tvReportConTitle"
                             android:layout_alignParentLeft="true"
                             android:layout_marginTop="7dp"/>
                     <TextView
-                            android:id="@+id/tvCon_person"
+                            android:id="@+id/tvReportConPerson"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="작성자 : "
                             android:textSize="13sp"
-                            android:layout_toLeftOf="@id/tvCon_user"
-                            android:layout_alignTop="@id/tvCon_date"/>
+                            android:layout_toLeftOf="@id/tvReportConUser"
+                            android:layout_alignTop="@id/tvReportConDate"/>
                     <TextView
-                            android:id="@+id/tvCon_user"
+                            android:id="@+id/tvReportConUser"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="name"
@@ -102,16 +102,16 @@
                             android:lines="1"
                             android:textSize="13sp"
                             android:layout_alignParentRight="true"
-                            android:layout_alignTop="@id/tvCon_date"/>
+                            android:layout_alignTop="@id/tvReportConDate"/>
                 </RelativeLayout>
                 <RelativeLayout
                         android:layout_width="340dp"
                         android:layout_height="250dp"
                         android:layout_centerHorizontal="true"
-                        android:layout_below="@id/layoutCon_title"
+                        android:layout_below="@id/layoutReportConTitle"
                         android:layout_marginTop="10dp">
                     <TextView
-                            android:id="@+id/tvCon_con"
+                            android:id="@+id/tvReportCon"
                             android:layout_width="match_parent"
                             android:layout_height="300dp"
                             android:textSize="14sp"

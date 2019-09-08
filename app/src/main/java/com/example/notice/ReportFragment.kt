@@ -54,7 +54,7 @@ class ReportFragment : Fragment() {
         }*/
         reportAdapter.setItemClickListener(object : RecyclerReportListAdapter.ItemClickListener {
             override fun onClick(view: View, position: Int) {
-                val intent = Intent(context, NoticeContent::class.java)
+                val intent = Intent(context, ReportContent::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 intent.putExtra("num", reportList[position].reportNum)
                 startActivity(intent)
